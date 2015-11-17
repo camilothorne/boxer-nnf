@@ -69,11 +69,11 @@ def t_ALL(t):
     return t
 
 def t_LP(t):
-    r'\('
+    r'('
     return t
 
 def t_RP(t):
-    r'\)'
+    r')'
     return t
 
 def t_COMMA(t):
@@ -233,12 +233,12 @@ fnnf5   = "or(p1p(A),or(p2p(A),p3p(A)))"
 fnnf6   = "not(p1p(A))"
 
 #parses
-ax1 = myparse(fnnf1,parserNFO)
+#ax1 = myparse(fnnf1,parserNFO)
 ax2 = myparse(fnnf2,parserNFO)
-ax3 = myparse(fnnf3,parserNFO)
-ax4 = myparse(fnnf4,parserNFO)
-ax5 = myparse(fnnf5,parserNFO)
-ax6 = myparse(fnnf6,parserNFO)
+# ax3 = myparse(fnnf3,parserNFO)
+# ax4 = myparse(fnnf4,parserNFO)
+# ax5 = myparse(fnnf5,parserNFO)
+# ax6 = myparse(fnnf6,parserNFO)
 
 
 """-------------------------------------------------------------

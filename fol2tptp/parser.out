@@ -10,32 +10,35 @@ Rule 4     for -> SOME LP VAR COMMA for RP
 Rule 5     for -> OR LP for COMMA for RP
 Rule 6     for -> IMP LP for COMMA for RP
 Rule 7     for -> ALL LP VAR COMMA for RP
-Rule 8     atom -> PRED LP VAR RP
-Rule 9     atom -> PRED LP VAR COMMA VAR RP
-Rule 10    atom -> EQ LP VAR COMMA VAR RP
-Rule 11    atom -> CARD LP VAR COMMA VAR RP
+Rule 8     for -> FOL LP NUM COMMA for RP
+Rule 9     atom -> PRED LP VAR RP
+Rule 10    atom -> PRED LP VAR COMMA VAR RP
+Rule 11    atom -> EQ LP VAR COMMA VAR RP
+Rule 12    atom -> CARD LP VAR COMMA VAR RP
 
 Terminals, with rules where they appear
 
 ALL                  : 7
 AND                  : 3
-CARD                 : 11
-COMMA                : 3 4 5 6 7 9 10 11
-EQ                   : 10
+CARD                 : 12
+COMMA                : 3 4 5 6 7 8 10 11 12
+EQ                   : 11
+FOL                  : 8
 IMP                  : 6
-LP                   : 2 3 4 5 6 7 8 9 10 11
+LP                   : 2 3 4 5 6 7 8 9 10 11 12
 NEG                  : 2
+NUM                  : 8
 OR                   : 5
-PRED                 : 8 9
-RP                   : 2 3 4 5 6 7 8 9 10 11
+PRED                 : 9 10
+RP                   : 2 3 4 5 6 7 8 9 10 11 12
 SOME                 : 4
-VAR                  : 4 7 8 9 9 10 10 11 11
+VAR                  : 4 7 9 10 10 11 11 12 12
 error                : 
 
 Nonterminals, with rules where they appear
 
 atom                 : 1
-for                  : 2 3 3 4 5 5 6 6 7 0
+for                  : 2 3 3 4 5 5 6 6 7 8 0
 
 Parsing method: LALR
 
@@ -49,36 +52,38 @@ state 0
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
     for                            shift and go to state 3
-    atom                           shift and go to state 7
+    atom                           shift and go to state 8
 
 state 1
 
     (3) for -> AND . LP for COMMA for RP
 
-    LP              shift and go to state 12
+    LP              shift and go to state 13
 
 
 state 2
 
     (7) for -> ALL . LP VAR COMMA for RP
 
-    LP              shift and go to state 13
+    LP              shift and go to state 14
 
 
 state 3
@@ -89,64 +94,71 @@ state 3
 
 state 4
 
-    (2) for -> NEG . LP for RP
-
-    LP              shift and go to state 14
-
-
-state 5
-
-    (4) for -> SOME . LP VAR COMMA for RP
+    (11) atom -> EQ . LP VAR COMMA VAR RP
 
     LP              shift and go to state 15
 
 
-state 6
+state 5
 
-    (6) for -> IMP . LP for COMMA for RP
+    (2) for -> NEG . LP for RP
 
     LP              shift and go to state 16
 
 
-state 7
+state 6
 
-    (1) for -> atom .
-
-    COMMA           reduce using rule 1 (for -> atom .)
-    RP              reduce using rule 1 (for -> atom .)
-    $end            reduce using rule 1 (for -> atom .)
-
-
-state 8
-
-    (10) atom -> EQ . LP VAR COMMA VAR RP
+    (4) for -> SOME . LP VAR COMMA for RP
 
     LP              shift and go to state 17
 
 
-state 9
+state 7
 
-    (5) for -> OR . LP for COMMA for RP
+    (6) for -> IMP . LP for COMMA for RP
 
     LP              shift and go to state 18
 
 
-state 10
+state 8
 
-    (11) atom -> CARD . LP VAR COMMA VAR RP
+    (1) for -> atom .
+
+    RP              reduce using rule 1 (for -> atom .)
+    COMMA           reduce using rule 1 (for -> atom .)
+    $end            reduce using rule 1 (for -> atom .)
+
+
+state 9
+
+    (8) for -> FOL . LP NUM COMMA for RP
 
     LP              shift and go to state 19
 
 
-state 11
+state 10
 
-    (8) atom -> PRED . LP VAR RP
-    (9) atom -> PRED . LP VAR COMMA VAR RP
+    (5) for -> OR . LP for COMMA for RP
 
     LP              shift and go to state 20
 
 
+state 11
+
+    (12) atom -> CARD . LP VAR COMMA VAR RP
+
+    LP              shift and go to state 21
+
+
 state 12
+
+    (9) atom -> PRED . LP VAR RP
+    (10) atom -> PRED . LP VAR COMMA VAR RP
+
+    LP              shift and go to state 22
+
+
+state 13
 
     (3) for -> AND LP . for COMMA for RP
     (1) for -> . atom
@@ -156,32 +168,41 @@ state 12
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 21
-    atom                           shift and go to state 7
+    for                            shift and go to state 23
+    atom                           shift and go to state 8
 
-state 13
+state 14
 
     (7) for -> ALL LP . VAR COMMA for RP
 
-    VAR             shift and go to state 22
+    VAR             shift and go to state 24
 
 
-state 14
+state 15
+
+    (11) atom -> EQ LP . VAR COMMA VAR RP
+
+    VAR             shift and go to state 25
+
+
+state 16
 
     (2) for -> NEG LP . for RP
     (1) for -> . atom
@@ -191,32 +212,34 @@ state 14
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 23
-    atom                           shift and go to state 7
+    for                            shift and go to state 26
+    atom                           shift and go to state 8
 
-state 15
+state 17
 
     (4) for -> SOME LP . VAR COMMA for RP
 
-    VAR             shift and go to state 24
+    VAR             shift and go to state 27
 
 
-state 16
+state 18
 
     (6) for -> IMP LP . for COMMA for RP
     (1) for -> . atom
@@ -226,32 +249,34 @@ state 16
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 25
-    atom                           shift and go to state 7
+    for                            shift and go to state 28
+    atom                           shift and go to state 8
 
-state 17
+state 19
 
-    (10) atom -> EQ LP . VAR COMMA VAR RP
+    (8) for -> FOL LP . NUM COMMA for RP
 
-    VAR             shift and go to state 26
+    NUM             shift and go to state 29
 
 
-state 18
+state 20
 
     (5) for -> OR LP . for COMMA for RP
     (1) for -> . atom
@@ -261,105 +286,114 @@ state 18
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 27
-    atom                           shift and go to state 7
-
-state 19
-
-    (11) atom -> CARD LP . VAR COMMA VAR RP
-
-    VAR             shift and go to state 28
-
-
-state 20
-
-    (8) atom -> PRED LP . VAR RP
-    (9) atom -> PRED LP . VAR COMMA VAR RP
-
-    VAR             shift and go to state 29
-
+    for                            shift and go to state 30
+    atom                           shift and go to state 8
 
 state 21
 
-    (3) for -> AND LP for . COMMA for RP
+    (12) atom -> CARD LP . VAR COMMA VAR RP
 
-    COMMA           shift and go to state 30
+    VAR             shift and go to state 31
 
 
 state 22
 
-    (7) for -> ALL LP VAR . COMMA for RP
+    (9) atom -> PRED LP . VAR RP
+    (10) atom -> PRED LP . VAR COMMA VAR RP
 
-    COMMA           shift and go to state 31
+    VAR             shift and go to state 32
 
 
 state 23
 
-    (2) for -> NEG LP for . RP
-
-    RP              shift and go to state 32
-
-
-state 24
-
-    (4) for -> SOME LP VAR . COMMA for RP
+    (3) for -> AND LP for . COMMA for RP
 
     COMMA           shift and go to state 33
 
 
-state 25
+state 24
 
-    (6) for -> IMP LP for . COMMA for RP
+    (7) for -> ALL LP VAR . COMMA for RP
 
     COMMA           shift and go to state 34
 
 
-state 26
+state 25
 
-    (10) atom -> EQ LP VAR . COMMA VAR RP
+    (11) atom -> EQ LP VAR . COMMA VAR RP
 
     COMMA           shift and go to state 35
 
 
+state 26
+
+    (2) for -> NEG LP for . RP
+
+    RP              shift and go to state 36
+
+
 state 27
 
-    (5) for -> OR LP for . COMMA for RP
-
-    COMMA           shift and go to state 36
-
-
-state 28
-
-    (11) atom -> CARD LP VAR . COMMA VAR RP
+    (4) for -> SOME LP VAR . COMMA for RP
 
     COMMA           shift and go to state 37
 
 
-state 29
+state 28
 
-    (8) atom -> PRED LP VAR . RP
-    (9) atom -> PRED LP VAR . COMMA VAR RP
+    (6) for -> IMP LP for . COMMA for RP
 
-    RP              shift and go to state 39
     COMMA           shift and go to state 38
 
 
+state 29
+
+    (8) for -> FOL LP NUM . COMMA for RP
+
+    COMMA           shift and go to state 39
+
+
 state 30
+
+    (5) for -> OR LP for . COMMA for RP
+
+    COMMA           shift and go to state 40
+
+
+state 31
+
+    (12) atom -> CARD LP VAR . COMMA VAR RP
+
+    COMMA           shift and go to state 41
+
+
+state 32
+
+    (9) atom -> PRED LP VAR . RP
+    (10) atom -> PRED LP VAR . COMMA VAR RP
+
+    RP              shift and go to state 43
+    COMMA           shift and go to state 42
+
+
+state 33
 
     (3) for -> AND LP for COMMA . for RP
     (1) for -> . atom
@@ -369,25 +403,27 @@ state 30
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 40
-    atom                           shift and go to state 7
+    for                            shift and go to state 44
+    atom                           shift and go to state 8
 
-state 31
+state 34
 
     (7) for -> ALL LP VAR COMMA . for RP
     (1) for -> . atom
@@ -397,34 +433,43 @@ state 31
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 41
-    atom                           shift and go to state 7
+    for                            shift and go to state 45
+    atom                           shift and go to state 8
 
-state 32
+state 35
+
+    (11) atom -> EQ LP VAR COMMA . VAR RP
+
+    VAR             shift and go to state 46
+
+
+state 36
 
     (2) for -> NEG LP for RP .
 
-    COMMA           reduce using rule 2 (for -> NEG LP for RP .)
     RP              reduce using rule 2 (for -> NEG LP for RP .)
+    COMMA           reduce using rule 2 (for -> NEG LP for RP .)
     $end            reduce using rule 2 (for -> NEG LP for RP .)
 
 
-state 33
+state 37
 
     (4) for -> SOME LP VAR COMMA . for RP
     (1) for -> . atom
@@ -434,25 +479,27 @@ state 33
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 42
-    atom                           shift and go to state 7
+    for                            shift and go to state 47
+    atom                           shift and go to state 8
 
-state 34
+state 38
 
     (6) for -> IMP LP for COMMA . for RP
     (1) for -> . atom
@@ -462,32 +509,57 @@ state 34
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 43
-    atom                           shift and go to state 7
+    for                            shift and go to state 48
+    atom                           shift and go to state 8
 
-state 35
+state 39
 
-    (10) atom -> EQ LP VAR COMMA . VAR RP
+    (8) for -> FOL LP NUM COMMA . for RP
+    (1) for -> . atom
+    (2) for -> . NEG LP for RP
+    (3) for -> . AND LP for COMMA for RP
+    (4) for -> . SOME LP VAR COMMA for RP
+    (5) for -> . OR LP for COMMA for RP
+    (6) for -> . IMP LP for COMMA for RP
+    (7) for -> . ALL LP VAR COMMA for RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    VAR             shift and go to state 44
+    NEG             shift and go to state 5
+    AND             shift and go to state 1
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
+    ALL             shift and go to state 2
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
+    for                            shift and go to state 49
+    atom                           shift and go to state 8
 
-state 36
+state 40
 
     (5) for -> OR LP for COMMA . for RP
     (1) for -> . atom
@@ -497,171 +569,189 @@ state 36
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) atom -> . PRED LP VAR RP
-    (9) atom -> . PRED LP VAR COMMA VAR RP
-    (10) atom -> . EQ LP VAR COMMA VAR RP
-    (11) atom -> . CARD LP VAR COMMA VAR RP
+    (8) for -> . FOL LP NUM COMMA for RP
+    (9) atom -> . PRED LP VAR RP
+    (10) atom -> . PRED LP VAR COMMA VAR RP
+    (11) atom -> . EQ LP VAR COMMA VAR RP
+    (12) atom -> . CARD LP VAR COMMA VAR RP
 
-    NEG             shift and go to state 4
+    NEG             shift and go to state 5
     AND             shift and go to state 1
-    SOME            shift and go to state 5
-    OR              shift and go to state 9
-    IMP             shift and go to state 6
+    SOME            shift and go to state 6
+    OR              shift and go to state 10
+    IMP             shift and go to state 7
     ALL             shift and go to state 2
-    PRED            shift and go to state 11
-    EQ              shift and go to state 8
-    CARD            shift and go to state 10
+    FOL             shift and go to state 9
+    PRED            shift and go to state 12
+    EQ              shift and go to state 4
+    CARD            shift and go to state 11
 
-    for                            shift and go to state 45
-    atom                           shift and go to state 7
-
-state 37
-
-    (11) atom -> CARD LP VAR COMMA . VAR RP
-
-    VAR             shift and go to state 46
-
-
-state 38
-
-    (9) atom -> PRED LP VAR COMMA . VAR RP
-
-    VAR             shift and go to state 47
-
-
-state 39
-
-    (8) atom -> PRED LP VAR RP .
-
-    COMMA           reduce using rule 8 (atom -> PRED LP VAR RP .)
-    RP              reduce using rule 8 (atom -> PRED LP VAR RP .)
-    $end            reduce using rule 8 (atom -> PRED LP VAR RP .)
-
-
-state 40
-
-    (3) for -> AND LP for COMMA for . RP
-
-    RP              shift and go to state 48
-
+    for                            shift and go to state 50
+    atom                           shift and go to state 8
 
 state 41
 
-    (7) for -> ALL LP VAR COMMA for . RP
+    (12) atom -> CARD LP VAR COMMA . VAR RP
 
-    RP              shift and go to state 49
+    VAR             shift and go to state 51
 
 
 state 42
 
-    (4) for -> SOME LP VAR COMMA for . RP
+    (10) atom -> PRED LP VAR COMMA . VAR RP
 
-    RP              shift and go to state 50
+    VAR             shift and go to state 52
 
 
 state 43
 
-    (6) for -> IMP LP for COMMA for . RP
+    (9) atom -> PRED LP VAR RP .
 
-    RP              shift and go to state 51
+    RP              reduce using rule 9 (atom -> PRED LP VAR RP .)
+    $end            reduce using rule 9 (atom -> PRED LP VAR RP .)
+    COMMA           reduce using rule 9 (atom -> PRED LP VAR RP .)
 
 
 state 44
 
-    (10) atom -> EQ LP VAR COMMA VAR . RP
-
-    RP              shift and go to state 52
-
-
-state 45
-
-    (5) for -> OR LP for COMMA for . RP
+    (3) for -> AND LP for COMMA for . RP
 
     RP              shift and go to state 53
 
 
-state 46
+state 45
 
-    (11) atom -> CARD LP VAR COMMA VAR . RP
+    (7) for -> ALL LP VAR COMMA for . RP
 
     RP              shift and go to state 54
 
 
-state 47
+state 46
 
-    (9) atom -> PRED LP VAR COMMA VAR . RP
+    (11) atom -> EQ LP VAR COMMA VAR . RP
 
     RP              shift and go to state 55
 
 
+state 47
+
+    (4) for -> SOME LP VAR COMMA for . RP
+
+    RP              shift and go to state 56
+
+
 state 48
 
-    (3) for -> AND LP for COMMA for RP .
+    (6) for -> IMP LP for COMMA for . RP
 
-    COMMA           reduce using rule 3 (for -> AND LP for COMMA for RP .)
-    RP              reduce using rule 3 (for -> AND LP for COMMA for RP .)
-    $end            reduce using rule 3 (for -> AND LP for COMMA for RP .)
+    RP              shift and go to state 57
 
 
 state 49
 
-    (7) for -> ALL LP VAR COMMA for RP .
+    (8) for -> FOL LP NUM COMMA for . RP
 
-    COMMA           reduce using rule 7 (for -> ALL LP VAR COMMA for RP .)
-    RP              reduce using rule 7 (for -> ALL LP VAR COMMA for RP .)
-    $end            reduce using rule 7 (for -> ALL LP VAR COMMA for RP .)
+    RP              shift and go to state 58
 
 
 state 50
 
-    (4) for -> SOME LP VAR COMMA for RP .
+    (5) for -> OR LP for COMMA for . RP
 
-    COMMA           reduce using rule 4 (for -> SOME LP VAR COMMA for RP .)
-    RP              reduce using rule 4 (for -> SOME LP VAR COMMA for RP .)
-    $end            reduce using rule 4 (for -> SOME LP VAR COMMA for RP .)
+    RP              shift and go to state 59
 
 
 state 51
 
-    (6) for -> IMP LP for COMMA for RP .
+    (12) atom -> CARD LP VAR COMMA VAR . RP
 
-    COMMA           reduce using rule 6 (for -> IMP LP for COMMA for RP .)
-    RP              reduce using rule 6 (for -> IMP LP for COMMA for RP .)
-    $end            reduce using rule 6 (for -> IMP LP for COMMA for RP .)
+    RP              shift and go to state 60
 
 
 state 52
 
-    (10) atom -> EQ LP VAR COMMA VAR RP .
+    (10) atom -> PRED LP VAR COMMA VAR . RP
 
-    COMMA           reduce using rule 10 (atom -> EQ LP VAR COMMA VAR RP .)
-    RP              reduce using rule 10 (atom -> EQ LP VAR COMMA VAR RP .)
-    $end            reduce using rule 10 (atom -> EQ LP VAR COMMA VAR RP .)
+    RP              shift and go to state 61
 
 
 state 53
 
-    (5) for -> OR LP for COMMA for RP .
+    (3) for -> AND LP for COMMA for RP .
 
-    COMMA           reduce using rule 5 (for -> OR LP for COMMA for RP .)
-    RP              reduce using rule 5 (for -> OR LP for COMMA for RP .)
-    $end            reduce using rule 5 (for -> OR LP for COMMA for RP .)
+    RP              reduce using rule 3 (for -> AND LP for COMMA for RP .)
+    COMMA           reduce using rule 3 (for -> AND LP for COMMA for RP .)
+    $end            reduce using rule 3 (for -> AND LP for COMMA for RP .)
 
 
 state 54
 
-    (11) atom -> CARD LP VAR COMMA VAR RP .
+    (7) for -> ALL LP VAR COMMA for RP .
 
-    COMMA           reduce using rule 11 (atom -> CARD LP VAR COMMA VAR RP .)
-    RP              reduce using rule 11 (atom -> CARD LP VAR COMMA VAR RP .)
-    $end            reduce using rule 11 (atom -> CARD LP VAR COMMA VAR RP .)
+    RP              reduce using rule 7 (for -> ALL LP VAR COMMA for RP .)
+    COMMA           reduce using rule 7 (for -> ALL LP VAR COMMA for RP .)
+    $end            reduce using rule 7 (for -> ALL LP VAR COMMA for RP .)
 
 
 state 55
 
-    (9) atom -> PRED LP VAR COMMA VAR RP .
+    (11) atom -> EQ LP VAR COMMA VAR RP .
 
-    COMMA           reduce using rule 9 (atom -> PRED LP VAR COMMA VAR RP .)
-    RP              reduce using rule 9 (atom -> PRED LP VAR COMMA VAR RP .)
-    $end            reduce using rule 9 (atom -> PRED LP VAR COMMA VAR RP .)
+    RP              reduce using rule 11 (atom -> EQ LP VAR COMMA VAR RP .)
+    $end            reduce using rule 11 (atom -> EQ LP VAR COMMA VAR RP .)
+    COMMA           reduce using rule 11 (atom -> EQ LP VAR COMMA VAR RP .)
+
+
+state 56
+
+    (4) for -> SOME LP VAR COMMA for RP .
+
+    RP              reduce using rule 4 (for -> SOME LP VAR COMMA for RP .)
+    COMMA           reduce using rule 4 (for -> SOME LP VAR COMMA for RP .)
+    $end            reduce using rule 4 (for -> SOME LP VAR COMMA for RP .)
+
+
+state 57
+
+    (6) for -> IMP LP for COMMA for RP .
+
+    RP              reduce using rule 6 (for -> IMP LP for COMMA for RP .)
+    COMMA           reduce using rule 6 (for -> IMP LP for COMMA for RP .)
+    $end            reduce using rule 6 (for -> IMP LP for COMMA for RP .)
+
+
+state 58
+
+    (8) for -> FOL LP NUM COMMA for RP .
+
+    RP              reduce using rule 8 (for -> FOL LP NUM COMMA for RP .)
+    COMMA           reduce using rule 8 (for -> FOL LP NUM COMMA for RP .)
+    $end            reduce using rule 8 (for -> FOL LP NUM COMMA for RP .)
+
+
+state 59
+
+    (5) for -> OR LP for COMMA for RP .
+
+    RP              reduce using rule 5 (for -> OR LP for COMMA for RP .)
+    COMMA           reduce using rule 5 (for -> OR LP for COMMA for RP .)
+    $end            reduce using rule 5 (for -> OR LP for COMMA for RP .)
+
+
+state 60
+
+    (12) atom -> CARD LP VAR COMMA VAR RP .
+
+    RP              reduce using rule 12 (atom -> CARD LP VAR COMMA VAR RP .)
+    $end            reduce using rule 12 (atom -> CARD LP VAR COMMA VAR RP .)
+    COMMA           reduce using rule 12 (atom -> CARD LP VAR COMMA VAR RP .)
+
+
+state 61
+
+    (10) atom -> PRED LP VAR COMMA VAR RP .
+
+    RP              reduce using rule 10 (atom -> PRED LP VAR COMMA VAR RP .)
+    $end            reduce using rule 10 (atom -> PRED LP VAR COMMA VAR RP .)
+    COMMA           reduce using rule 10 (atom -> PRED LP VAR COMMA VAR RP .)
 

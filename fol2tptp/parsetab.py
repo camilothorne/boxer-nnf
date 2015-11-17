@@ -5,9 +5,9 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = '\xe2\x88\x87c0X\x14g\x1aY\xc1.N\xba\xa4\x9c'
+_lr_signature = 'e\x99Z\x95\x0c\xd9\n\xfc\xbd\x1a\x8c6w=S\xef'
     
-_lr_action_items = {'AND':([0,12,14,16,18,30,31,33,34,36,],[1,1,1,1,1,1,1,1,1,1,]),'ALL':([0,12,14,16,18,30,31,33,34,36,],[2,2,2,2,2,2,2,2,2,2,]),'RP':([7,23,29,32,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,],[-1,32,39,-2,-8,48,49,50,51,52,53,54,55,-3,-7,-4,-6,-10,-5,-11,-9,]),'NEG':([0,12,14,16,18,30,31,33,34,36,],[4,4,4,4,4,4,4,4,4,4,]),'SOME':([0,12,14,16,18,30,31,33,34,36,],[5,5,5,5,5,5,5,5,5,5,]),'IMP':([0,12,14,16,18,30,31,33,34,36,],[6,6,6,6,6,6,6,6,6,6,]),'COMMA':([7,21,22,24,25,26,27,28,29,32,39,48,49,50,51,52,53,54,55,],[-1,30,31,33,34,35,36,37,38,-2,-8,-3,-7,-4,-6,-10,-5,-11,-9,]),'LP':([1,2,4,5,6,8,9,10,11,],[12,13,14,15,16,17,18,19,20,]),'PRED':([0,12,14,16,18,30,31,33,34,36,],[11,11,11,11,11,11,11,11,11,11,]),'VAR':([13,15,17,19,20,35,37,38,],[22,24,26,28,29,44,46,47,]),'EQ':([0,12,14,16,18,30,31,33,34,36,],[8,8,8,8,8,8,8,8,8,8,]),'OR':([0,12,14,16,18,30,31,33,34,36,],[9,9,9,9,9,9,9,9,9,9,]),'CARD':([0,12,14,16,18,30,31,33,34,36,],[10,10,10,10,10,10,10,10,10,10,]),'$end':([3,7,32,39,48,49,50,51,52,53,54,55,],[0,-1,-2,-8,-3,-7,-4,-6,-10,-5,-11,-9,]),}
+_lr_action_items = {'AND':([0,13,16,18,20,33,34,37,38,39,40,],[1,1,1,1,1,1,1,1,1,1,1,]),'ALL':([0,13,16,18,20,33,34,37,38,39,40,],[2,2,2,2,2,2,2,2,2,2,2,]),'RP':([8,26,32,36,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,],[-1,36,43,-2,-9,53,54,55,56,57,58,59,60,61,-3,-7,-11,-4,-6,-8,-5,-12,-10,]),'NEG':([0,13,16,18,20,33,34,37,38,39,40,],[5,5,5,5,5,5,5,5,5,5,5,]),'SOME':([0,13,16,18,20,33,34,37,38,39,40,],[6,6,6,6,6,6,6,6,6,6,6,]),'IMP':([0,13,16,18,20,33,34,37,38,39,40,],[7,7,7,7,7,7,7,7,7,7,7,]),'NUM':([19,],[29,]),'COMMA':([8,23,24,25,27,28,29,30,31,32,36,43,53,54,55,56,57,58,59,60,61,],[-1,33,34,35,37,38,39,40,41,42,-2,-9,-3,-7,-11,-4,-6,-8,-5,-12,-10,]),'LP':([1,2,4,5,6,7,9,10,11,12,],[13,14,15,16,17,18,19,20,21,22,]),'PRED':([0,13,16,18,20,33,34,37,38,39,40,],[12,12,12,12,12,12,12,12,12,12,12,]),'FOL':([0,13,16,18,20,33,34,37,38,39,40,],[9,9,9,9,9,9,9,9,9,9,9,]),'VAR':([14,15,17,21,22,35,41,42,],[24,25,27,31,32,46,51,52,]),'EQ':([0,13,16,18,20,33,34,37,38,39,40,],[4,4,4,4,4,4,4,4,4,4,4,]),'OR':([0,13,16,18,20,33,34,37,38,39,40,],[10,10,10,10,10,10,10,10,10,10,10,]),'CARD':([0,13,16,18,20,33,34,37,38,39,40,],[11,11,11,11,11,11,11,11,11,11,11,]),'$end':([3,8,36,43,53,54,55,56,57,58,59,60,61,],[0,-1,-2,-9,-3,-7,-11,-4,-6,-8,-5,-12,-10,]),}
 
 _lr_action = { }
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'for':([0,12,14,16,18,30,31,33,34,36,],[3,21,23,25,27,40,41,42,43,45,]),'atom':([0,12,14,16,18,30,31,33,34,36,],[7,7,7,7,7,7,7,7,7,7,]),}
+_lr_goto_items = {'for':([0,13,16,18,20,33,34,37,38,39,40,],[3,23,26,28,30,44,45,47,48,49,50,]),'atom':([0,13,16,18,20,33,34,37,38,39,40,],[8,8,8,8,8,8,8,8,8,8,8,]),}
 
 _lr_goto = { }
 for _k, _v in _lr_goto_items.items():
@@ -26,15 +26,16 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> for","S'",1,None,None,None),
-  ('for -> atom','for',1,'p_forAt','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',144),
-  ('for -> NEG LP for RP','for',4,'p_forNEG','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',150),
-  ('for -> AND LP for COMMA for RP','for',6,'p_forAND','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',156),
-  ('for -> SOME LP VAR COMMA for RP','for',6,'p_forSOME','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',162),
-  ('for -> OR LP for COMMA for RP','for',6,'p_forOR','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',168),
-  ('for -> IMP LP for COMMA for RP','for',6,'p_forIMP','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',174),
-  ('for -> ALL LP VAR COMMA for RP','for',6,'p_forALL','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',180),
-  ('atom -> PRED LP VAR RP','atom',4,'p_atom1','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',191),
-  ('atom -> PRED LP VAR COMMA VAR RP','atom',6,'p_atom2','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',196),
-  ('atom -> EQ LP VAR COMMA VAR RP','atom',6,'p_atom3','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',201),
-  ('atom -> CARD LP VAR COMMA VAR RP','atom',6,'p_atom4','/Users/camilothorne/workspace2/boxer/fol2tptp/wrapper.py',206),
+  ('for -> atom','for',1,'p_forAt','wrapper.py',146),
+  ('for -> NEG LP for RP','for',4,'p_forNEG','wrapper.py',152),
+  ('for -> AND LP for COMMA for RP','for',6,'p_forAND','wrapper.py',158),
+  ('for -> SOME LP VAR COMMA for RP','for',6,'p_forSOME','wrapper.py',164),
+  ('for -> OR LP for COMMA for RP','for',6,'p_forOR','wrapper.py',170),
+  ('for -> IMP LP for COMMA for RP','for',6,'p_forIMP','wrapper.py',176),
+  ('for -> ALL LP VAR COMMA for RP','for',6,'p_forALL','wrapper.py',182),
+  ('for -> FOL LP NUM COMMA for RP','for',6,'p_forFOL','wrapper.py',188),
+  ('atom -> PRED LP VAR RP','atom',4,'p_atom1','wrapper.py',198),
+  ('atom -> PRED LP VAR COMMA VAR RP','atom',6,'p_atom2','wrapper.py',203),
+  ('atom -> EQ LP VAR COMMA VAR RP','atom',6,'p_atom3','wrapper.py',208),
+  ('atom -> CARD LP VAR COMMA VAR RP','atom',6,'p_atom4','wrapper.py',213),
 ]
