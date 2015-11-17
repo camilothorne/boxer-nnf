@@ -56,45 +56,6 @@ def t_PRED(t):
     #print t.value
     return t
 
-# def t_EQ(t):
-#     r'eq'
-#     #print t.value
-#     return t
-# 
-# def t_CARD(t):
-#     r'card'
-#     #print t.value
-#     return t
-
-# def t_NEG(t):
-#     t.type = reserved.get(t.value,'NEG')
-#     return t
-
-# def t_AND(t):
-#     r'and'
-#     #print t.value
-#     return t
-# 
-# def t_SOME(t):
-#     r'some'
-#     #print t.value
-#     return t
-# 
-# def t_OR(t):
-#     r'or'
-#     #print t.value
-#     return t
-# 
-# def t_IMP(t):
-#     r'imp'
-#     #print t.value
-#     return t
-# 
-# def t_ALL(t):
-#     r'all'
-#     #print t.value
-#     return t
-# 
 def t_LP(t):
     r'\('
     #print t.value
@@ -109,11 +70,6 @@ def t_COMMA(t):
     r','
     #print t.value
     return t
- 
-# def t_TYP(t):
-#     r'fol'
-#     #print t.value
-#     return t
 
 def t_DIG(t):
     r'\d'
@@ -128,9 +84,10 @@ def t_error(t):
     print "Illegal character '%s'" % t.value[0]
     t.lexer.skip(1)
     
-# skipping ignored characters (spaces and tabs)
+# skipping ignored characters (spaces, tabs, etc.)
 
 t_ignore  = ' \t'
+t_ignore  = ' [.]'
 
 """----------------------------------------------------------"""
 
