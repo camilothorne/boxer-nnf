@@ -17,95 +17,107 @@ import ply.yacc as yacc
  1. Tokenizer
 ------------------------------------------------------------"""
 
-
-# list of token names   
-
-tokens = ('VAR', 'PRED', 'OR', 'IMP', 'LP', 'RP', 'COMMA', 
-          'AND', 'SOME', 'ALL', 'NEG', 'EQ', 'CARD', 'FOL', 'NUM')
-
 # reserved words
 
 reserved = {
-    '' : 'NIL',
+            
+    'not' : 'NEG',
+    'all' : 'ALL',
+    'some': 'SOME',
+    'or'  : 'OR',
+    'and' : 'AND',
+    'imp' : 'IMP',
+    'eq'  : 'EQ',
+    'card': 'CARD',
+    'fol' : 'TYP'
+    
 }
 
 # list of token names   
 
-tokens = ['VAR', 'PRED', 'OR', 'IMP', 'LP', 'RP', 'COMMA', 
-          'AND', 'SOME', 'ALL', 'NEG', 'EQ', 'CARD', 'FOL', 'NUM'] + list(reserved)
+tokens = ['VAR', 'PRED', 'DIG', 'LP', 'COMMA', 'RP'] + list(reserved.values())
 
 """-------------------------------------------------------------"""
 
 # token definitions
 
 def t_VAR(t):
-    r'[A-Z]'
+    r'(_G[0-9]+ | [A-Z])'
     # check for reserved words
-    #t.type = reserved.get(t.value,'VAR')
-    print t.value
+    t.type = reserved.get(t.value,'VAR')
+    #print t.value
     return t
 
 def t_PRED(t):
-    #r'([A-Za-z0-9]* | [A-Za-z0-9_]+_[0-9A-Za-z\-]+ | [a-z]{1,1}[0-9]+[a-z]+)'
-    r'([a-z] | [a-z0-9])*'
+    #r'([a-z]+ | [A-Za-z0-9_]+_[0-9A-Za-z\-]+ | [a-z]{1,1}[0-9]+[a-z]+)'
+    r'([a-z]+([0-9]+[a-z]+)* | [A-Za-z0-9_]+_[0-9A-Za-z\-]+ | [a-z]{1,1}[0-9]+[a-z]+)'
     # check for reserved words
-    #t.type = reserved.get(t.value,'PRED')
-    print t.value
+    t.type = reserved.get(t.value,'PRED')
+    #print t.value
     return t
 
-def t_NUM(t):
-    r'\d+'
-    # check for reserved words
-    #t.type = reserved.get(t.value,'NUM')
-    print t.value
-    return t
+# def t_EQ(t):
+#     r'eq'
+#     #print t.value
+#     return t
+# 
+# def t_CARD(t):
+#     r'card'
+#     #print t.value
+#     return t
 
-def t_EQ(t):
-    r'eq'
-    return t
+# def t_NEG(t):
+#     t.type = reserved.get(t.value,'NEG')
+#     return t
 
-def t_CARD(t):
-    r'card'
-    return t
-
-def t_NEG(t):
-    r'not'
-    return t
-
-def t_AND(t):
-    r'and'
-    return t
-
-def t_SOME(t):
-    r'some'
-    return t
-
-def t_OR(t):
-    r'or'
-    return t
-
-def t_IMP(t):
-    r'imp'
-    return t
-
-def t_ALL(t):
-    r'all'
-    return t
-
+# def t_AND(t):
+#     r'and'
+#     #print t.value
+#     return t
+# 
+# def t_SOME(t):
+#     r'some'
+#     #print t.value
+#     return t
+# 
+# def t_OR(t):
+#     r'or'
+#     #print t.value
+#     return t
+# 
+# def t_IMP(t):
+#     r'imp'
+#     #print t.value
+#     return t
+# 
+# def t_ALL(t):
+#     r'all'
+#     #print t.value
+#     return t
+# 
 def t_LP(t):
     r'\('
+    #print t.value
     return t
-
+ 
 def t_RP(t):
     r'\)'
+    #print t.value
     return t
-
+ 
 def t_COMMA(t):
     r','
+    #print t.value
     return t
+ 
+# def t_TYP(t):
+#     r'fol'
+#     #print t.value
+#     return t
 
-def t_FOL(t):
-    r'fol'  
+def t_DIG(t):
+    r'\d'
+    t.type = reserved.get(t.value,'DIG')
     return t
 
 """-------------------------------------------------------------"""
@@ -150,7 +162,7 @@ def p_forAt(p):
     'for : atom'
     # nothing to do
     p[0] = p[1]
-    #print "parsed formula: ", p[0]
+    print "parsed formula: ", p[0]
         
 def p_forNEG(p):
     'for : NEG LP for RP'
@@ -188,8 +200,8 @@ def p_forALL(p):
     p[0] = quant("(!",p[3],p[5]+")")
     #print "parsed formula: ", p[0]
 
-def p_forFOL(p):
-    'for : FOL LP NUM COMMA for RP'
+def p_forTYP(p):
+    'for : TYP LP DIG COMMA for RP'
     #projection
     p[0] = p[5]
     #print "parsed formula: ", p[0]    
