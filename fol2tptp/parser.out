@@ -10,7 +10,7 @@ Rule 4     for -> SOME LP VAR COMMA for RP
 Rule 5     for -> OR LP for COMMA for RP
 Rule 6     for -> IMP LP for COMMA for RP
 Rule 7     for -> ALL LP VAR COMMA for RP
-Rule 8     for -> FOL LP NUM COMMA for RP
+Rule 8     for -> TYP LP DIG COMMA for RP
 Rule 9     atom -> PRED LP VAR RP
 Rule 10    atom -> PRED LP VAR COMMA VAR RP
 Rule 11    atom -> EQ LP VAR COMMA VAR RP
@@ -22,16 +22,16 @@ ALL                  : 7
 AND                  : 3
 CARD                 : 12
 COMMA                : 3 4 5 6 7 8 10 11 12
+DIG                  : 8
 EQ                   : 11
-FOL                  : 8
 IMP                  : 6
 LP                   : 2 3 4 5 6 7 8 9 10 11 12
 NEG                  : 2
-NUM                  : 8
 OR                   : 5
 PRED                 : 9 10
 RP                   : 2 3 4 5 6 7 8 9 10 11 12
 SOME                 : 4
+TYP                  : 8
 VAR                  : 4 7 9 10 10 11 11 12 12
 error                : 
 
@@ -52,7 +52,7 @@ state 0
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -64,7 +64,7 @@ state 0
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -131,7 +131,7 @@ state 8
 
 state 9
 
-    (8) for -> FOL . LP NUM COMMA for RP
+    (8) for -> TYP . LP DIG COMMA for RP
 
     LP              shift and go to state 19
 
@@ -168,7 +168,7 @@ state 13
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -180,7 +180,7 @@ state 13
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -212,7 +212,7 @@ state 16
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -224,7 +224,7 @@ state 16
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -249,7 +249,7 @@ state 18
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -261,7 +261,7 @@ state 18
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -271,9 +271,9 @@ state 18
 
 state 19
 
-    (8) for -> FOL LP . NUM COMMA for RP
+    (8) for -> TYP LP . DIG COMMA for RP
 
-    NUM             shift and go to state 29
+    DIG             shift and go to state 29
 
 
 state 20
@@ -286,7 +286,7 @@ state 20
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -298,7 +298,7 @@ state 20
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -365,7 +365,7 @@ state 28
 
 state 29
 
-    (8) for -> FOL LP NUM . COMMA for RP
+    (8) for -> TYP LP DIG . COMMA for RP
 
     COMMA           shift and go to state 39
 
@@ -403,7 +403,7 @@ state 33
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -415,7 +415,7 @@ state 33
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -433,7 +433,7 @@ state 34
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -445,7 +445,7 @@ state 34
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -479,7 +479,7 @@ state 37
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -491,7 +491,7 @@ state 37
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -509,7 +509,7 @@ state 38
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -521,7 +521,7 @@ state 38
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -531,7 +531,7 @@ state 38
 
 state 39
 
-    (8) for -> FOL LP NUM COMMA . for RP
+    (8) for -> TYP LP DIG COMMA . for RP
     (1) for -> . atom
     (2) for -> . NEG LP for RP
     (3) for -> . AND LP for COMMA for RP
@@ -539,7 +539,7 @@ state 39
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -551,7 +551,7 @@ state 39
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -569,7 +569,7 @@ state 40
     (5) for -> . OR LP for COMMA for RP
     (6) for -> . IMP LP for COMMA for RP
     (7) for -> . ALL LP VAR COMMA for RP
-    (8) for -> . FOL LP NUM COMMA for RP
+    (8) for -> . TYP LP DIG COMMA for RP
     (9) atom -> . PRED LP VAR RP
     (10) atom -> . PRED LP VAR COMMA VAR RP
     (11) atom -> . EQ LP VAR COMMA VAR RP
@@ -581,7 +581,7 @@ state 40
     OR              shift and go to state 10
     IMP             shift and go to state 7
     ALL             shift and go to state 2
-    FOL             shift and go to state 9
+    TYP             shift and go to state 9
     PRED            shift and go to state 12
     EQ              shift and go to state 4
     CARD            shift and go to state 11
@@ -649,7 +649,7 @@ state 48
 
 state 49
 
-    (8) for -> FOL LP NUM COMMA for . RP
+    (8) for -> TYP LP DIG COMMA for . RP
 
     RP              shift and go to state 58
 
@@ -722,11 +722,11 @@ state 57
 
 state 58
 
-    (8) for -> FOL LP NUM COMMA for RP .
+    (8) for -> TYP LP DIG COMMA for RP .
 
-    RP              reduce using rule 8 (for -> FOL LP NUM COMMA for RP .)
-    COMMA           reduce using rule 8 (for -> FOL LP NUM COMMA for RP .)
-    $end            reduce using rule 8 (for -> FOL LP NUM COMMA for RP .)
+    RP              reduce using rule 8 (for -> TYP LP DIG COMMA for RP .)
+    COMMA           reduce using rule 8 (for -> TYP LP DIG COMMA for RP .)
+    $end            reduce using rule 8 (for -> TYP LP DIG COMMA for RP .)
 
 
 state 59
