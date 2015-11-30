@@ -42,7 +42,7 @@ tokens = ['VAR', 'PRED', 'DIG', 'LP', 'COMMA', 'RP'] + list(reserved.values())
 # token definitions
 
 def t_VAR(t):
-    r'(_G[0-9]+ | [A-Z])'
+    r'(_G[0-9]+ | [A-Z][0-9]*)'
     # check for reserved words
     t.type = reserved.get(t.value,'VAR')
     #print t.value
@@ -50,7 +50,10 @@ def t_VAR(t):
 
 def t_PRED(t):
     #r'([a-z]+ | [A-Za-z0-9_]+_[0-9A-Za-z\-]+ | [a-z]{1,1}[0-9]+[a-z]+)'
-    r'([a-z]+([0-9]+[a-z]+)* | [A-Za-z0-9_]+_[0-9A-Za-z\-]+ | [a-z]{1,1}[0-9]+[a-z]+)'
+    #r'([a-z]+([0-9]+[a-z]+)* | [A-Za-z0-9_]+_[0-9A-Za-z\-]+ | [a-z]{1,1}([0-9]+[a-z]+)* | [a-z]+([0-9a-zA-Z]+)*)'
+    r'[a-z]+([0-9a-zA-Z_]+)*'
+    
+    
     # check for reserved words
     t.type = reserved.get(t.value,'PRED')
     #print t.value
@@ -72,7 +75,7 @@ def t_COMMA(t):
     return t
 
 def t_DIG(t):
-    r'\d'
+    r'\d+'
     t.type = reserved.get(t.value,'DIG')
     return t
 
@@ -81,7 +84,7 @@ def t_DIG(t):
 # error handling rule
 
 def t_error(t):
-    print "Illegal character '%s'" % t.value[0]
+    #print "Illegal character '%s'" % t.value[0]
     t.lexer.skip(1)
     
 # skipping ignored characters (spaces, tabs, etc.)
@@ -119,12 +122,12 @@ def p_forAt(p):
     'for : atom'
     # nothing to do
     p[0] = p[1]
-    print "parsed formula: ", p[0]
+    #print "parsed formula: ", p[0]
         
 def p_forNEG(p):
     'for : NEG LP for RP'
     # we change only the negation symbol
-    p[0] = "~" + p[2] + p[3] + p[4]
+    p[0] = "~" + p[3]
     #print "parsed formula: ", p[0]
     
 def p_forAND(p):
@@ -192,7 +195,10 @@ def p_atom4(p):
 # c. errors
         
 def p_error(t):
-    print("Syntax error at '%s'" %t.value)
+    if t is not None:
+        print("Syntax error at '%s'" %t.value)
+    else:
+        print("Unexpected end of input")
 
 """------------------------------------------------------------"""
 
@@ -207,7 +213,7 @@ parserFO = yacc.yacc(optimize=1)
 
 
 def makeWrapper(formula,typ):
-    if None != parserFO.parse(formula,lexer=lexerFO):
+    if parserFO.parse(formula,lexer=lexerFO) is not None:
         if typ == "axiom":
             return "fof(comsem,axiom, " + parserFO.parse(formula,lexer=lexerFO) + " )."
         if typ == "conjecture":
@@ -215,4 +221,4 @@ def makeWrapper(formula,typ):
         if typ == "plain":
             return parserFO.parse(formula,lexer=lexerFO)
     else:
-        return ""
+        return "No parse!"
